@@ -10,7 +10,7 @@ const app = async (yargsObj) => {
         title: yargsObj.title,
         actor: yargsObj.actor,
       });
-      //add movie to MongoDB DB, needs collection and success message.
+      console.log(`${yargsObj} added to the database.`);
     } else {
       console.log("Incorrect command.");
     }
