@@ -11,7 +11,7 @@ const {
 const app = async (yargsObj) => {
   try {
     const collection = await connection();
-    if (yargsObj.create) {
+    if (yargsObj.add) {
       await addMovie(collection, {
         title: yargsObj.title,
         actor: yargsObj.actor,

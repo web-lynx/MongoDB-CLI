@@ -28,30 +28,14 @@ exports.updateOne = async (collection, yargsObj) => {};
 //Delete One Instance
 exports.deleteItem = async (collection, yargsObj) => {
   if (yargsObj.title) {
-    query = { title: [yargsObj.title] };
-    deleteResult = await collection.deleteOne(query);
-    if (deleteResult.deletedCount) {
-      console.log(`${deletedCount} items deleted.`);
-    } else {
-      console.log("No files deleted");
-    }
+    deleteResult = await collection.deleteOne({ title: yargsObj.title });
+    console.log(`${deleteResult.deletedCount} item(s) deleted.`);
   } else if (yargsObj.actor) {
-    query = { actor: yargsObj.actor };
-    console.log(query);
-    deleteResult = await collection.deleteOne(query);
-    if (deleteResult.deletedCount) {
-      console.log(`${deletedCount} items deleted.`);
-    } else {
-      console.log("No files deleted");
-    }
+    deleteResult = await collection.deleteOne({ actor: yargsObj.actor });
+    console.log(`${deleteResult.deletedCount} item(s) deleted.`);
   } else if (yargsObj.id) {
-    query = { id: yargsObj.id };
-    deleteResult = await collection.deleteOne(query);
-    if (deleteResult.deletedCount) {
-      console.log(`${deletedCount} items deleted.`);
-    } else {
-      console.log("No files deleted");
-    }
+    deleteResult = await collection.deleteOne({ _id: yargsObj.id });
+    console.log(`${deleteResult.deletedCount} item(s) deleted.`);
   } else {
     console.log("No files found with that value.");
   }
@@ -60,45 +44,15 @@ exports.deleteItem = async (collection, yargsObj) => {
 //Delete All Instances
 exports.deleteAll = async (collection, yargsObj) => {
   if (yargsObj.title) {
-    query = { title: [yargsObj.title] };
-    deleteResult = await collection.deleteMany(query);
-    if (deleteResult.deletedCount) {
-      console.log(`${deletedCount} items deleted.`);
-    } else {
-      console.log("No files deleted");
-    }
+    deleteResult = await collection.deleteMany({ title: yargsObj.title });
+    console.log(`${deleteResult.deletedCount} item(s) deleted.`);
   } else if (yargsObj.actor) {
-    query = { actor: [yargsObj.actor] };
-    deleteResult = await collection.deleteMany(query);
-    if (deleteResult.deletedCount) {
-      console.log(`${deletedCount} items deleted.`);
-    } else {
-      console.log("No files deleted");
-    }
+    deleteResult = await collection.deleteMany({ actor: yargsObj.actor });
+    console.log(`${deleteResult.deletedCount} item(s) deleted.`);
   } else if (yargsObj.id) {
-    query = { id: yargsObj.id };
-    deleteResult = await collection.deleteMany(query);
-    if (deleteResult.deletedCount) {
-      console.log(`${deletedCount} items deleted.`);
-    } else {
-      console.log("No files deleted");
-    }
+    deleteResult = await collection.deleteMany({ _id: yargsObj.id });
+    console.log(`${deleteResult.deletedCount} item(s) deleted.`);
   } else {
     console.log("No files found with that value.");
   }
 };
-
-// switch (yargsObj) {
-//     case (yargsObj.title).length != 0:
-//
-//       }
-//       break;
-//     case yargsObj.actor:
-//       query = yargsObj.actor;
-//       deleteResult = await collection.deleteMany(query).toArray();
-//       console.log(deleteResult);
-//       break;
-//     default:
-//       console.log("Your switch doesn't work");
-//       break;
-//   }
