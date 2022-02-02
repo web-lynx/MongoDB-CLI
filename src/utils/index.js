@@ -22,8 +22,26 @@ exports.readAll = async (collection) => {
   console.log("Found all documents =>", results);
 };
 
-//Update
-exports.updateOne = async (collection, yargsObj) => {};
+//Update - Syntax would be node src/app.js --update --title/etc="old"  --newtitle/etc="new value"
+exports.updateOne = async (collection, yargsObj) => {
+  if (yargsObj.newtitle) {
+    const updateResult = await collection.updateOne(
+      { title: yargsObj.title },
+      {
+        $set: { title: yargsObj.newtitle },
+      }
+    );
+    console.log("Updated documents =>", updateResult);
+  } else if (yargsObj.newactor) {
+    const updateResult = await collection.updateOne(
+      { actor: yargsObj.actor },
+      {
+        $set: { title: yargsObj.newactor },
+      }
+    );
+    console.log("Updated documents =>", updateResult);
+  }
+};
 
 //Delete One Instance
 exports.deleteItem = async (collection, yargsObj) => {

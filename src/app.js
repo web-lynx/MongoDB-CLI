@@ -6,9 +6,11 @@ const {
   readFilter,
   deleteItem,
   deleteAll,
+  updateOne,
 } = require("./utils");
 
 const app = async (yargsObj) => {
+  console.log(Object.keys(yargsObj)[1]); // This is an attempt at something a little fancy for the search functionality
   try {
     const collection = await connection();
     if (yargsObj.add) {
@@ -24,6 +26,8 @@ const app = async (yargsObj) => {
         title: yargsObj.title,
         actor: yargsObj.actor,
       });
+    } else if (yargsObj.update) {
+      await updateOne(collection, yargsObj);
     } else if (yargsObj.deleteone) {
       await deleteItem(collection, yargsObj);
     } else if (yargsObj.deleteall) {
