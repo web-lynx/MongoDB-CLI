@@ -17,6 +17,9 @@ const app = async (yargsObj) => {
       await addMovie(collection, {
         title: yargsObj.title,
         actor: yargsObj.actor,
+        genre: yargsObj.genre,
+        rating: yargsObj.rating,
+        synopsis: yargsObj.synopsis,
       });
       console.log(`${yargsObj.title} added to the database.`);
     } else if (yargsObj.readall) {
